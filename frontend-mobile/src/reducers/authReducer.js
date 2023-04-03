@@ -7,7 +7,7 @@ const initialState = {
     error: ''
 };
 
-const url = `http://192.168.9.28:3000`;
+const url = `http://192.168.43.193:3000`;
 
 const fetchUrl = async (api, body, token = "") => {
     const res = await fetch(url + api, {
