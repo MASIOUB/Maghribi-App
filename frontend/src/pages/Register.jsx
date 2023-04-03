@@ -1,9 +1,12 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useState } from 'react';
 import { signupUser } from '../reducers/authReducer';
 import { useDispatch, useSelector } from 'react-redux';
 
 function Register() {
+    const dispatch = useDispatch();
+    let navigate = useNavigate();
+
     const [firstName, setFirstName] = useState('');
     const [lastName, setLastName] = useState('');
     const [phone, setPhone] = useState('');
@@ -12,7 +15,6 @@ function Register() {
     const [country, setCountry] = useState('');
     const [city, setCity] = useState('');
     const [address, setAddress] = useState('');
-    const dispatch = useDispatch();
     const { loading, error } = useSelector(state => {
         return state.user
     })
@@ -28,7 +30,8 @@ function Register() {
             country,
             city,
             address,
-        }))
+        }));
+        navigate('/login')
     };
 
     return (
@@ -86,14 +89,14 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="lastName"
-                                name="lastName"
-                                type="text"
-                                value={lastName}
-                                onChange={(e) => setLastName(e.target.value)}
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Last name" />
+                                    id="lastName"
+                                    name="lastName"
+                                    type="text"
+                                    value={lastName}
+                                    onChange={(e) => setLastName(e.target.value)}
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="Last name" />
                             </div>
                         </div>
 
@@ -103,14 +106,14 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="phone"
-                                name="phone"
-                                type="text"
-                                value={phone}
-                                onChange={(e) => setPhone(e.target.value)}
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Phone" />
+                                    id="phone"
+                                    name="phone"
+                                    type="text"
+                                    value={phone}
+                                    onChange={(e) => setPhone(e.target.value)}
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="Phone" />
                             </div>
                         </div>
 
@@ -120,15 +123,15 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="email"
-                                name="email"
-                                type="email"
-                                value={email}
-                                onChange={(e) => setEmail(e.target.value)}
-                                autoComplete="email"
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="you@example.com" />
+                                    id="email"
+                                    name="email"
+                                    type="email"
+                                    value={email}
+                                    onChange={(e) => setEmail(e.target.value)}
+                                    autoComplete="email"
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="you@example.com" />
                             </div>
                         </div>
 
@@ -138,15 +141,15 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="password"
-                                name="password"
-                                type="password"
-                                value={password}
-                                onChange={(e) => setPassword(e.target.value)}
-                                autoComplete="current-password"
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="********" />
+                                    id="password"
+                                    name="password"
+                                    type="password"
+                                    value={password}
+                                    onChange={(e) => setPassword(e.target.value)}
+                                    autoComplete="current-password"
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="********" />
                             </div>
                         </div>
 
@@ -156,14 +159,14 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="country"
-                                name="country"
-                                type="text"
-                                value={country}
-                                onChange={(e) => setCountry(e.target.value)}
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Country" />
+                                    id="country"
+                                    name="country"
+                                    type="text"
+                                    value={country}
+                                    onChange={(e) => setCountry(e.target.value)}
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="Country" />
                             </div>
                         </div>
 
@@ -173,14 +176,14 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="city"
-                                name="city"
-                                type="text"
-                                value={city}
-                                onChange={(e) => setCity(e.target.value)}
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="City" />
+                                    id="city"
+                                    name="city"
+                                    type="text"
+                                    value={city}
+                                    onChange={(e) => setCity(e.target.value)}
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="City" />
                             </div>
                         </div>
 
@@ -190,14 +193,14 @@ function Register() {
                             </label>
                             <div className="mt-1">
                                 <input
-                                id="address"
-                                name="address"
-                                type="text"
-                                value={address}
-                                onChange={(e) => setAddress(e.target.value)}
-                                required
-                                className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
-                                placeholder="Address" />
+                                    id="address"
+                                    name="address"
+                                    type="text"
+                                    value={address}
+                                    onChange={(e) => setAddress(e.target.value)}
+                                    required
+                                    className="appearance-none block w-full px-3 py-2 border border-gray-300 rounded-md shadow-sm placeholder-gray-400 focus:outline-none focus:ring-blue-500 focus:border-blue-500 sm:text-sm"
+                                    placeholder="Address" />
                             </div>
                         </div>
 
