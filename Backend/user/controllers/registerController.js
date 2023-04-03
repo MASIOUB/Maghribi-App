@@ -41,9 +41,9 @@ const registerUser = async(req, res) => {
         })
 
         user ? res.status(201).json({
-            // firstName: user.firstName,
-            // lastName: user.lastName,
-            // email: user.email,
+            firstName: user.firstName,
+            lastName: user.lastName,
+            email: user.email,
             // password: hashedPassword,
             message: "signup successful"
         })
