@@ -2,6 +2,7 @@ const express = require('express');
 require('dotenv').config();
 const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
+const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const cors = require('cors');
 
 connectDB();
@@ -43,6 +44,9 @@ app.use('/categories', require('./category/routes/categoryRoutes'));
 
 // product routes
 app.use('/products', require('./product/routes/productRoutes'));
+
+app.use(notFound);
+app.use(errorHandler);
 
 // Set Port, Listen For Requests
 const PORT = process.env.PORT || 5000;
