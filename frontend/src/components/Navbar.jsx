@@ -39,7 +39,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between flex-grow pl-12'>
           <div className='flex items-center space-x-6 capitalize'>
             <Link to="/" className='text-gray-200 hover:text-white transition'>Home</Link>
-            <Link to="/" className='text-gray-200 hover:text-white transition'>Shop</Link>
+            <Link to="/shop" className='text-gray-200 hover:text-white transition'>Shop</Link>
             <Link to="/" className='text-gray-200 hover:text-white transition'>Contact us</Link>
           </div>
           <div className='flex items-center space-x-6 capitalize'>

@@ -69,7 +69,6 @@ const Home = () => {
         </div>
 
         <div className="relative m-3 flex flex-wrap mx-auto justify-center">
-
           {(products.length === 0) ? (
             'There is no products yet'
           ) : products.map((product, key) => (
@@ -95,9 +94,6 @@ const Home = () => {
               </div>
             </div>
           ))}
-
-
-
         </div>
       </div>
     </div>

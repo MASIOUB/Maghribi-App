@@ -3,6 +3,7 @@ import Layout from './components/Layout';
 import Home from './pages/Home';
 import Login from "./pages/Login";
 import Register from "./pages/Register";
+import Shop from './pages/Shop';
 import { addToken} from './reducers/authReducer'
 import { useSelector, useDispatch } from 'react-redux';
 
@@ -14,6 +15,7 @@ function App() {
           <Route index element={<Home />} />
           <Route path='/login' element={<Login />} />
           <Route path='/register' element={<Register />} />
+          <Route path='/shop' element={<Shop />} />
         </Route>
       </Routes>
     </Router>
