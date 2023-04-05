@@ -1,8 +1,9 @@
 const bcrypt = require('bcryptjs');
 const User = require('../models/userModel');
 const generateToken = require('../middlewares/generateToken');
+const asyncHandler = require ('express-async-handler');
 
-const loginUser = async (req, res) => {
+const loginUser = asyncHandler(async (req, res) => {
     const { email, password } = req.body;
 
     const user = await User.findOne({ email});
@@ -27,6 +28,6 @@ const loginUser = async (req, res) => {
             token: generateToken(user.id),
         })
     }
-}
+});
 
 module.exports = loginUser;

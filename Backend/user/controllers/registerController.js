@@ -1,7 +1,8 @@
 const bcrypt = require('bcryptjs');
-const User = require('../models/userModel')
+const User = require('../models/userModel');
+const asyncHandler = require('express-async-handler');
 
-const registerUser = async(req, res) => {
+const registerUser = asyncHandler(async(req, res) => {
     if(Object.keys(req.body).length > 0) {
         const {
             firstName,
@@ -13,11 +14,6 @@ const registerUser = async(req, res) => {
             city,
             address,
         } = req.body;
-
-        // check fieilds 
-        if (
-            !firstName || !lastName || !phone || !email || !password || !country || !city || !address
-        ) return res.status(400).json({ message: "all fields are required" })
 
         // check email
         const isUserExist = await User.findOne({ email });
@@ -44,11 +40,10 @@ const registerUser = async(req, res) => {
             firstName: user.firstName,
             lastName: user.lastName,
             email: user.email,
-            // password: hashedPassword,
             message: "signup successful"
         })
         : null;
     }
-}
+});
 
 module.exports = registerUser;
