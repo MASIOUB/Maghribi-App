@@ -68,7 +68,7 @@ const Home = () => {
           </div>
         </div>
 
-        <div className="relative m-3 flex flex-wrap mx-auto justify-center">
+        <div className="mt-6 grid grid-cols-1 gap-x-6 gap-y-10 sm:grid-cols-1 lg:grid-cols-3 xl:gap-x-8 p-5">
           {(products.length === 0) ? (
             'There is no products yet'
           ) : products.map((product, key) => (

@@ -1,13 +1,33 @@
+import { useState, useEffect } from 'react';
+import axios from 'axios';
 import { Link } from 'react-router-dom';
 import { useDispatch, useSelector } from 'react-redux';
 import { addToken, logout } from '../reducers/authReducer';
 
 const Navbar = () => {
+  const [categories, setCategories] = useState([]);
+
+  useEffect(() => {
+    getCategories();
+  }, []);
+
   const dispatch = useDispatch();
   const token = useSelector((state) => state.user.token);
   dispatch(addToken());
+
+  const getCategories = async () => {
+    await axios
+      .get('http://localhost:3000/categories')
+      .then(res => {
+        setCategories(res.data);
+        console.log(res.data);
+      });
+  };
+
+  // console.log(categories.categoryList[1].children[0].name)
+
   return (
-    <div className='bg-primary'>
+    <div className='bg-primary py-3'>
       <div className='container flex'>
         {/* All Categories */}
         <div className='px-8 py-4 bg-primary flex items-center cursor-pointer relative group'>
@@ -39,7 +59,7 @@ const Navbar = () => {
         <div className='flex items-center justify-between flex-grow pl-12'>
           <div className='flex items-center space-x-6 capitalize'>
             <Link to="/" className='text-gray-200 hover:text-white transition'>Home</Link>
-            <Link to="/shop" className='text-gray-200 hover:text-white transition'>Shop</Link>
+            <Link to="/shop" className='text-gray-200 hover:text-white transition'>Products</Link>
             <Link to="/" className='text-gray-200 hover:text-white transition'>Contact us</Link>
           </div>
           <div className='flex items-center space-x-6 capitalize'>
