@@ -6,7 +6,10 @@ const categorySchema = mongoose.Schema(
             type: String,
             required: true,
             unique: true,
-        }
+        },
+        parentId: {
+            type: String,
+        },
     },
     {
         timestamps: true,
