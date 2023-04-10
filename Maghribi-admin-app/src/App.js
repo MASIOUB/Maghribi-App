@@ -1,23 +1,33 @@
-import logo from './logo.svg';
-import './App.css';
+import { BrowserRouter as Router, Routes, Route } from 'react-router-dom';
+import Login from './pages/Login';
+import Layout from './components/Layout';
+import Dashboard from "./pages/Dashboard";
+import Products from './pages/Products';
+import NewProduct from './pages/NewProduct';
+import Users from './pages/Users';
+import { addToken} from './reducers/authReducer'
+import { useSelector, useDispatch } from 'react-redux';
 
 function App() {
+  const token = useSelector((state) => state.user.token);
+  const dispatch = useDispatch();
+  dispatch(addToken())
   return (
-    <div className="App">
-      <header className="App-header">
-        <img src={logo} className="App-logo" alt="logo" />
-        <p>
-          Edit <code>src/App.js</code> and save to reload.
-        </p>
-        <a
-          className="App-link"
-          href="https://reactjs.org"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          Learn React
-        </a>
-      </header>
+    <div>
+      <Router>
+        <Routes>
+          {(token && token !== 'undefined') ? (
+            <Route path="/" element={<Layout />}>
+              <Route index element={<Dashboard />} />
+              <Route path='/products' element={<Products />} />
+              <Route path='/new-product' element={<NewProduct />} />
+              <Route path='/users' element={<Users />} />
+            </Route>
+          ) : (
+            <Route path='/' element={<Login />} />
+          )}
+        </Routes>
+      </Router>
     </div>
   );
 }
