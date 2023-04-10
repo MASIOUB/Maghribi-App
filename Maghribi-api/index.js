@@ -4,6 +4,7 @@ const bodyParser = require('body-parser');
 const connectDB = require('./config/db');
 const { notFound, errorHandler } = require('./middlewares/errorHandler');
 const cors = require('cors');
+const path = require("path");  
 
 connectDB();
 
@@ -44,6 +45,8 @@ app.use('/categories', require('./category/routes/categoryRoutes'));
 
 // product routes
 app.use('/products', require('./product/routes/productRoutes'));
+
+app.use("/images", express.static(path.join("images")));
 
 app.use(notFound);
 app.use(errorHandler);
