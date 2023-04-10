@@ -6,7 +6,7 @@ const initialState = {
     error: ''
 };
 
-const fetch1 = async (api, body, token = "") => {
+const fetchApi = async (api, body, token = "") => {
     const res = await fetch(api, {
         method: 'POST',
         headers: {
@@ -21,7 +21,7 @@ const fetch1 = async (api, body, token = "") => {
 export const signupUser = createAsyncThunk(
     'signupuser',
     async (body) => {
-        const result = await fetch1('/users/register', body);
+        const result = await fetchApi('/users/register', body);
         return result;
     }
 );
@@ -29,7 +29,7 @@ export const signupUser = createAsyncThunk(
 export const loginUser = createAsyncThunk(
     'loginuser',
     async (body) => {
-        const result = await fetch1('/users/login', body);
+        const result = await fetchApi('/users/login', body);
         return result;
     }
 );
